@@ -13,6 +13,46 @@ pygame.display.set_caption("Menu")
 
 BG = pygame.image.load("assets/Background.png")
 
+def play():
+    pass
+
+def options():
+    pass
+
+def endGame():
+    pygame.quit()
+    sys.exit()
+
+buttons.append(Button(
+    image = pygame.image.load("assets/Play Rect.png"),
+    pos = (640, 250), 
+    text_input = "PLAY",
+    font = get_font(75),
+    base_color = "#d7fcd4",
+    hovering_color = "White",
+    click_effect = lambda : play()
+))
+
+buttons.append(Button(
+    image = pygame.image.load("assets/Options Rect.png"),
+    pos = (640, 400), 
+    text_input = "OPTIONS",
+    font = get_font(75),
+    base_color = "#d7fcd4",
+    hovering_color = "White",
+    click_effect = lambda : options()
+))
+
+buttons.append(Button(
+    image = pygame.image.load("assets/Quit Rect.png"),
+    pos = (640, 550), 
+    text_input = "QUIT",
+    font = get_font(75),
+    base_color = "#d7fcd4",
+    hovering_color = "White",
+    click_effect = lambda : endGame()
+))
+
 # @function run_app : runs the app
 def run_app():
     
@@ -22,40 +62,6 @@ def run_app():
         SCREEN.blit(BG, (0, 0))
 
         MENU_MOUSE_POS = pygame.mouse.get_pos()
-
-
-        buttons.append(Button(
-            image = pygame.image.load("assets/Play Rect.png"),
-            pos = (640, 250), 
-            text_input = "PLAY",
-            font = get_font(75),
-            base_color = "#d7fcd4",
-            hovering_color = "White"
-            #click_effect = lambda : play()
-        ))
-
-        buttons.append(Button(
-            image = pygame.image.load("assets/Options Rect.png"),
-            pos = (640, 400), 
-            text_input = "OPTIONS",
-            font = get_font(75),
-            base_color = "#d7fcd4",
-            hovering_color = "White"
-            #click_effect = lambda : options()
-        ))
-
-        def endGame():
-            pygame.quit()
-            sys.exit()
-        buttons.append(Button(
-            image = pygame.image.load("assets/Quit Rect.png"),
-            pos = (640, 550), 
-            text_input = "QUIT",
-            font = get_font(75),
-            base_color = "#d7fcd4",
-            hovering_color = "White"
-            #click_effect = lambda : endGame()
-        ))
 
         MENU_TEXT = get_font(100).render("MAIN MENU", True, "#b68f40")
         MENU_RECT = MENU_TEXT.get_rect(center=(640, 100))
