@@ -36,5 +36,3 @@ class Button():
     
     def clicked(self):
         self.click_effect()
-
-buttons = []

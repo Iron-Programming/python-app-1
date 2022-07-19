@@ -11,15 +11,15 @@ def menu():
 
 # simulation gallery
 def simulationGallery():
-    pass
+    SCREEN.blit(BG, (0, 0))
 
 # about/instructions page
 def about():
-    pass
+    SCREEN.blit(BG, (0, 0))
 
 # simulation page
 def simulationPage():
-    pass
+    SCREEN.blit(BG, (0, 0))
 
 # dictionary of keys
 scenes = {
@@ -28,8 +28,6 @@ scenes = {
     'simulationGallery' : simulationGallery,
     'simulationPage' : simulationPage
 }
-
-addInterval(to_simulations, 1000)
 
 # @function run_app : runs the app
 def run_app():
@@ -44,7 +42,7 @@ def run_app():
         scenes[globals['scene']]()
         
         # scene management
-        for button in buttons:
+        for button in buttons[globals['scene']]:
             button.display(SCREEN, mouse_pos)
         
         for event in pygame.event.get():
@@ -52,12 +50,16 @@ def run_app():
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                for button in buttons:
+                for button in buttons[globals['scene']]:
                     if button.isInside(mouse_pos):
                         button.clicked()
                         
         for interval in intervals:
             interval.update(SCREEN)
+
+            if interval.done:
+                intervals.remove(interval)
+
         
         # update scene
         pygame.display.update()

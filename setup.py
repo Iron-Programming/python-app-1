@@ -2,7 +2,7 @@ from library import *
 from button import *
 
 def to_simulations():
-    globals['scene'] = 'play'
+    globals['scene'] = 'simulationGallery'
 
 def to_about():
     globals['scene'] = 'about'
@@ -23,26 +23,33 @@ pygame.display.set_caption("Final Project")
 # load background image
 BG = pygame.image.load("assets/background.jpg")
 
+buttons = {
+    'menu' : [],
+    'about' : [],
+    'simulationGallery' : [],
+    'simulationPage' : []
+}
+
 # add buttons
-buttons.append(Button(
+buttons['menu'].append(Button(
     image = pygame.image.load("assets/button.jpg"),
     hover_image = pygame.image.load("assets/buttonhover.jpg"),
     pos = (640, 250), 
     text_input = "Simulations",
     font = get_font(55),
     base_color = "#d7fcd4",
-    click_effect = lambda : to_simulations()
+    click_effect = lambda : addInterval(to_simulations, 10)
 ))
-buttons.append(Button(
+buttons['menu'].append(Button(
     image = pygame.image.load("assets/button.jpg"),
     hover_image = pygame.image.load("assets/buttonhover.jpg"),
     pos = (640, 400), 
     text_input = "About",
     font = get_font(55),
     base_color = "#d7fcd4",
-    click_effect = lambda : to_about()
+    click_effect = lambda : addInterval(to_about, 10)
 ))
-buttons.append(Button(
+buttons['menu'].append(Button(
     image = pygame.image.load("assets/button.jpg"),
     hover_image = pygame.image.load("assets/buttonhover.jpg"),
     pos = (640, 550), 

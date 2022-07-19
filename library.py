@@ -22,15 +22,32 @@ class Interval():
         # button graphic
         self.callback = config['callback']
         self.duration = config['duration']
+        self.cover = pygame.Surface((globals['width'], globals['height']))
+        self.alpha = 0
+        self.direction = "forward"
+        self.done = False
         
     def update(self, screen):
-        #cover = pygame.Rect(0, 0, globals['width'], globals['height'])
-        #screen.blit(cover)
-        pass
+        if self.direction == "forward":
+            self.alpha += (255 - self.alpha) / (self.duration / 2)
+
+            if (255 - self.alpha < 0.01):
+                self.direction = "backward"
+                self.callback()
+        elif self.direction == "backward":
+            self.alpha += (0 - self.alpha) / (self.duration / 2)
+
+            if (self.alpha < 0.01):
+                self.done = True
+        
+        self.cover.set_alpha(self.alpha)
+        self.cover.fill((0, 0, 0))
+        screen.blit(self.cover, (0, 0))
+
 
 intervals = []
 
-def addInterval(cb, dur):
+def addInterval(cb, dur=10):
     intervals.append(Interval(
         callback = cb,
         duration = dur
