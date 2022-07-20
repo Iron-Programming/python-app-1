@@ -51,6 +51,8 @@ def simulationArea():
         scratch_pad_rect = scratch_pad.get_rect(midbottom=(globals['width']/2, globals['height']))
         scratch_pad.fill((255, 255, 255))
         SCREEN.blit(scratch_pad, scratch_pad_rect)
+
+        simulations['subprograms'][globals["simulation"]]()
     else:
         MENU_TEXT = get_font(100).render("INTERVAL_ERROR", True, "#b68f40")
         MENU_RECT = MENU_TEXT.get_rect(center=(globals['width']/2, 100))

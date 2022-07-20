@@ -56,9 +56,6 @@ class Interval():
 intervals = []
 
 def addInterval(args):
-    print('ddd')
-    print(args)
-
     argList = [None] * 3
     for i in range(0, len(args)):
         argList[i] = args[i]

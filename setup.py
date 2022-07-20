@@ -5,7 +5,7 @@ from library import *
 from button import *
 
 # simulations
-from taylorSeries import *
+from vector_slope_field import *
 from fireworks import *
 
 def to_simulations():
@@ -92,7 +92,7 @@ buttons['about'].append(Button(
 simulations = {
     'navigation' : {
         'math' : [
-            "Taylor Series"
+            "Vector Slope Field"
         ],
         'chemistry' : [
             
@@ -105,7 +105,7 @@ simulations = {
         ]
     },
     'subprograms': {
-        "taylor series" : taylorSeries,
+        "vector slope field" : vectorSlopeField,
         "fireworks" : fireworks
     }
 }
@@ -140,8 +140,6 @@ for category in simulations['navigation']:
         ))
         i += 1
     j += 1
-
-print(buttons['simulationGallery'][len(buttons['simulationGallery']) - 1].click_effect)
 
 # simulation area
 buttons['simulationArea'].append(Button(
