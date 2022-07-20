@@ -8,6 +8,7 @@ from button import *
 from vector_slope_field import *
 from fireworks import *
 
+######################### go-to function scenes #########################
 def to_simulations():
     globals['scene'] = 'simulationGallery'
 
@@ -33,6 +34,7 @@ pygame.display.set_caption("Final Project")
 # load background image
 BG = pygame.image.load("assets/background.jpg")
 
+######################### buttons for each scene #########################
 buttons = {
     'menu' : [],
     'about' : [],
@@ -40,7 +42,7 @@ buttons = {
     'simulationArea' : []
 }
 
-#menu buttons
+######################### menu buttons #########################
 buttons['menu'].append(Button(
     image = pygame.image.load("assets/button.jpg"),
     hover_image = pygame.image.load("assets/buttonhover.jpg"),
@@ -75,7 +77,7 @@ buttons['menu'].append(Button(
     effect_args = []
 ))
 
-#about
+######################### about buttons #########################
 buttons['about'].append(Button(
     image = pygame.image.load("assets/button.jpg"),
     hover_image = pygame.image.load("assets/buttonhover.jpg"),
@@ -88,20 +90,40 @@ buttons['about'].append(Button(
     effect_args = [to_menu, 10]
 ))
 
-# simulation gallery
+######################### simulation-gallery buttons #########################
 simulations = {
     'navigation' : {
         'math' : [
-            "Vector Slope Field"
+            "Vector Slope Field",
+            "???",
+            "???",
+            "???",
+            "???",
+            "???"
         ],
         'chemistry' : [
-            
+            "???",
+            "???",
+            "???",
+            "???",
+            "???",
+            "???"
         ],
         'physics' : [
-            "Fireworks"
+            "Fireworks",
+            "???",
+            "???",
+            "???",
+            "???",
+            "???"
         ],
         'astronomy' : [
-            
+            "???",
+            "???",
+            "???",
+            "???",
+            "???",
+            "???"
         ]
     },
     'subprograms': {
@@ -141,7 +163,7 @@ for category in simulations['navigation']:
         i += 1
     j += 1
 
-# simulation area
+######################### simulation area buttons #########################
 buttons['simulationArea'].append(Button(
     image = pygame.image.load("assets/button.jpg"),
     hover_image = pygame.image.load("assets/buttonhover.jpg"),

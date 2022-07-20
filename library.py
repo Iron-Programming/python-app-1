@@ -65,6 +65,7 @@ class Interval():
         screen.blit(self.cover, (0, 0))
 
 
+######################### adding timed intervals #########################
 intervals = []
 
 def addInterval(args):

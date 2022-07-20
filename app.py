@@ -1,16 +1,18 @@
-
 # get libraries, helper functions, and global definitions (globals)
 #from pyparsing import null_debug_action
 from setup import *
 
-# main menu
+# used to set the framerate of the program
+clock = pygame.time.Clock()
+
+################## main menu ##################
 def menu():
     SCREEN.blit(BG, (0, 0))
     MENU_TEXT = get_font(90).render("Reality Simulator", True, "#b68f40")
     MENU_RECT = MENU_TEXT.get_rect(center=(globals['width']/2, 100))
     SCREEN.blit(MENU_TEXT, MENU_RECT)
 
-# simulation gallery
+################## simulation gallery ##################
 def simulationGallery():
     SCREEN.blit(BG, (0, 0))
     TITLE_TEXT = get_font(90).render("Simulation Gallery", True, "#b68f40")
@@ -38,7 +40,7 @@ def simulationGallery():
     SCREEN.blit(PHYSICS, PHYSICS_RECT)
     SCREEN.blit(ASTRONOMY, ASTRONOMY_RECT)
 
-#simulation area
+################## simulation area ##################
 def simulationArea():
     SCREEN.blit(BG, (0, 0))
 
@@ -58,7 +60,7 @@ def simulationArea():
         MENU_RECT = MENU_TEXT.get_rect(center=(globals['width']/2, 100))
         SCREEN.blit(MENU_TEXT, MENU_RECT)
 
-# about/instructions page
+################## about/instructions page ##################
 def about():
     SCREEN.blit(BG, (0, 0))
     TITLE_TEXT = get_font(90).render("About", True, "#b68f40")
@@ -80,7 +82,7 @@ def about():
     SCREEN.blit(BODY_TEXT3, BODY_RECT3)
     SCREEN.blit(BODY_TEXT4, BODY_RECT4)
 
-# dictionary of keys
+################## dictionary of keys ##################
 scenes = {
     'menu' : menu,
     'about' : about,
@@ -88,6 +90,7 @@ scenes = {
     'simulationArea' : simulationArea
 }
 
+################## putting it together ##################
 # @function run_app : runs the app
 def run_app():
     
@@ -122,6 +125,8 @@ def run_app():
         
         # update scene
         pygame.display.update()
+
+        clock.tick(60)
 
 # run the app
 run_app()

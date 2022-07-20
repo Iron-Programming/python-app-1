@@ -1,8 +1,10 @@
+######################### simulation libraries #########################
 import pygame
 import math
 import random
 from library import *
 
+######################### program variables #########################
 g1 = {
     'mapX' : globals['width']/2,
     'mapY' : globals['height'] - 250,
@@ -15,7 +17,14 @@ numPoints = 250 # of points int he program
 speed = 1 # how fast the points move
 timer = 0
 
+######################### vector slope field definition (function) #########################
+def slopeField(x, y):
+    dxDy = -math.cos(x/25)
+    return dxDy
+
+######################### Point Class #########################
 class Point():
+    # Point Constructor
     def __init__(self, **config):
         self.x = config['x']
         self.y = config['y']
@@ -24,6 +33,7 @@ class Point():
         self.speed = speed * random.uniform(0.3, 1)
         self.slope = 0
     
+    # Updates the Point according to the vector slope field
     def update(self):
         self.slope = slopeField(self.x - g1['mapX'], self.y - g1['mapY'])
 
@@ -33,9 +43,11 @@ class Point():
         self.x += self.xVel
         self.y += self.yVel
     
+    # Displays the Point
     def display(self):
         pygame.draw.ellipse(SCREEN, (0, 255, 0), (self.x, self.y, 10, 10))
 
+######################### Create starting points #########################
 points = []
 
 for i in range (0, numPoints):
@@ -44,19 +56,8 @@ for i in range (0, numPoints):
         y = random.uniform(g1['mapY'] - g1['mapHeight']/2, g1['mapY'] + g1['mapHeight']/2)
     ))
 
-def slopeField(x, y):
-    dxDy = -math.cos(x/25)
-    return dxDy
-
+######################### @function to call in main loop #########################
 def vectorSlopeField():
-    '''MENU_TEXT = get_font(90).render("Vector Slope Field", True, "#b68f40")
-    MENU_RECT = MENU_TEXT.get_rect(center=(globals['width']/2, 100))
-    SCREEN.blit(MENU_TEXT, MENU_RECT)
-
-    addRect(globals['width']/2, g1['mapY'], globals['width'], globals['height'] - 200, (255, 255, 255))'''
-
-
-    # WORK AREA
     for x in range(-200, 200, 25):
         for y in range(-250, 250, 25):
             slope = slopeField(x, y)
@@ -79,4 +80,3 @@ def vectorSlopeField():
     
     addRect((g1['mapX'] - g1['mapWidth']/2)/2.2, g1['mapY'] - 10, g1['mapX'] - g1['mapWidth']/2, globals['height'] - 200, (200, 200, 200))
     addRect(globals['width'] - (g1['mapX'] - g1['mapWidth']/2)/2, g1['mapY'] - 10, g1['mapX'] - g1['mapWidth']/2, globals['height'] - 200, (200, 200, 200))
-    # END OF WORK AREA1
