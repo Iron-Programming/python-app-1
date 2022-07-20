@@ -47,7 +47,7 @@ class Interval():
 
 intervals = []
 
-def addInterval(cb, dur=10):
+def addInterval(cb, dur, **kwargs):
     intervals.append(Interval(
         callback = cb,
         duration = dur
