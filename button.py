@@ -17,6 +17,7 @@ class Button():
         self.color = config['color']
         self.text_input = config['text_input']
         self.click_effect = config['click_effect']
+        self.effect_args = config['effect_args']
         self.text = self.font.render(self.text_input, True, self.color)
         self.rect = self.image.get_rect(center=(self.x_pos, self.y_pos))
         self.text_rect = self.text.get_rect(center=(self.x_pos, self.y_pos))
@@ -34,4 +35,4 @@ class Button():
         return False
     
     def clicked(self):
-        self.click_effect()
+        self.click_effect(self.effect_args)

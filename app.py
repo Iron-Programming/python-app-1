@@ -1,23 +1,19 @@
 
 # get libraries, helper functions, and global definitions (globals)
-from pyparsing import null_debug_action
+#from pyparsing import null_debug_action
 from setup import *
-
-# simulation area variables
-simulationTitle = ""       #title
-simulationProgram = None   #function
 
 # main menu
 def menu():
     SCREEN.blit(BG, (0, 0))
-    MENU_TEXT = get_font(100).render("Reality Simulator", True, "#b68f40")
+    MENU_TEXT = get_font(90).render("Reality Simulator", True, "#b68f40")
     MENU_RECT = MENU_TEXT.get_rect(center=(globals['width']/2, 100))
     SCREEN.blit(MENU_TEXT, MENU_RECT)
 
 # simulation gallery
 def simulationGallery():
     SCREEN.blit(BG, (0, 0))
-    TITLE_TEXT = get_font(100).render("Simulation Gallery", True, "#b68f40")
+    TITLE_TEXT = get_font(90).render("Simulation Gallery", True, "#b68f40")
     TITLE_RECT = TITLE_TEXT.get_rect(center=(globals['width']/2, 100))
     pygame.draw.line(SCREEN, "#b68f40", (globals['width']/2 - 400, 155), (globals['width']/2 + 400, 155), width=5)
     SUBTITLE_TEXT = get_font(50, "philosopher").render("Pick a Simulation", True, "#b68f40")
@@ -45,14 +41,25 @@ def simulationGallery():
 #simulation area
 def simulationArea():
     SCREEN.blit(BG, (0, 0))
-    MENU_TEXT = get_font(100).render("INTERVAL_ERROR", True, "#b68f40")
-    MENU_RECT = MENU_TEXT.get_rect(center=(globals['width']/2, 100))
-    SCREEN.blit(MENU_TEXT, MENU_RECT)
+
+    if globals["simulation"] in simulations['subprograms']:
+        MENU_TEXT = get_font(90).render(globals["simulation"], True, "#b68f40")
+        MENU_RECT = MENU_TEXT.get_rect(center=(globals['width']/2, 100))
+        SCREEN.blit(MENU_TEXT, MENU_RECT)
+
+        scratch_pad = pygame.Surface((globals['width'], globals['height'] - 200))
+        scratch_pad_rect = scratch_pad.get_rect(midbottom=(globals['width']/2, globals['height']))
+        scratch_pad.fill((255, 255, 255))
+        SCREEN.blit(scratch_pad, scratch_pad_rect)
+    else:
+        MENU_TEXT = get_font(100).render("INTERVAL_ERROR", True, "#b68f40")
+        MENU_RECT = MENU_TEXT.get_rect(center=(globals['width']/2, 100))
+        SCREEN.blit(MENU_TEXT, MENU_RECT)
 
 # about/instructions page
 def about():
     SCREEN.blit(BG, (0, 0))
-    TITLE_TEXT = get_font(100).render("About", True, "#b68f40")
+    TITLE_TEXT = get_font(90).render("About", True, "#b68f40")
     TITLE_RECT = TITLE_TEXT.get_rect(center=(globals['width']/2, 100))
 
 

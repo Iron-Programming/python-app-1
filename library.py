@@ -8,6 +8,7 @@ from button import *
 # global definitions (multi-file)
 globals = {
     'scene' : 'menu',
+    'simulation' : '???',
     'width' : 1280,
     'height' : 720
 }
@@ -27,6 +28,9 @@ class Interval():
         self.direction = "forward"
         self.done = False
         
+        # extra arguments (for callback function)
+        self.simulation = config['simulation']
+        
     def update(self, screen):
         if self.direction == "forward":
             self.alpha += (255 - self.alpha) / (self.duration / 2)
@@ -34,6 +38,7 @@ class Interval():
             if (255 - self.alpha < 0.01):
                 self.direction = "backward"
                 self.callback()
+                globals['simulation'] = self.simulation
         elif self.direction == "backward":
             self.alpha += (0 - self.alpha) / (self.duration / 2)
 
@@ -47,9 +52,17 @@ class Interval():
 
 intervals = []
 
-def addInterval(cb, dur, **kwargs):
+def addInterval(args):
+    print('ddd')
+    print(args)
+
+    argList = [None] * 3
+    for i in range(0, len(args)):
+        argList[i] = args[i]
+
+
     intervals.append(Interval(
-        callback = cb,
-        duration = dur
-    ))
-    
+        callback = argList[0],
+        duration = argList[1],
+        simulation = argList[2]
+    ))    
