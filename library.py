@@ -13,6 +13,9 @@ globals = {
     'height' : 720
 }
 
+# set screen size
+SCREEN = pygame.display.set_mode((globals['width'], globals['height']))
+
 def get_font(size, name="lemon_days"): # Returns Press-Start-2P in the desired size
     return pygame.font.Font("assets/" + name + ".ttf", size)
 

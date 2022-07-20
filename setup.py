@@ -5,8 +5,8 @@ from library import *
 from button import *
 
 # simulations
-from particles import *
-from normal_distribution import *
+from taylorSeries import *
+from fireworks import *
 
 def to_simulations():
     globals['scene'] = 'simulationGallery'
@@ -26,9 +26,6 @@ def end_game():
 
 # initalize pygame canvas
 pygame.init()
-
-# set screen size
-SCREEN = pygame.display.set_mode((globals['width'], globals['height']))
 
 # set app name
 pygame.display.set_caption("Final Project")
@@ -95,21 +92,21 @@ buttons['about'].append(Button(
 simulations = {
     'navigation' : {
         'math' : [
-            "Normal Distributions"
+            "Taylor Series"
         ],
         'chemistry' : [
             
         ],
         'physics' : [
-            "Particles"
+            "Fireworks"
         ],
         'astronomy' : [
             
         ]
     },
     'subprograms': {
-        "particles" : particlesSimulation,
-        "normal distributions" : normalDistribution
+        "taylor series" : taylorSeries,
+        "fireworks" : fireworks
     }
 }
 
