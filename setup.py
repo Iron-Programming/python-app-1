@@ -106,7 +106,7 @@ simulations = {
     },
     'subprograms': {
         "vector slope field" : vectorSlopeField,
-        "fireworks" : fireworks
+        "fireworks" : fireworksProgram
     }
 }
 

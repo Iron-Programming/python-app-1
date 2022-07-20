@@ -16,6 +16,7 @@ globals = {
 # set screen size
 SCREEN = pygame.display.set_mode((globals['width'], globals['height']))
 
+######################### generic helper functions #########################
 def get_font(size, name="lemon_days"): # Returns Press-Start-2P in the desired size
     return pygame.font.Font("assets/" + name + ".ttf", size)
 
@@ -28,7 +29,10 @@ def addRect(x, y, w, h, c):
     scratch_pad.fill(c)
     SCREEN.blit(scratch_pad, scratch_pad_rect)
 
-# timed intervals (switching scenes)
+def map(n, start1, stop1, start2, stop2):
+    return ((n - start1) / (stop1 - start1))*(stop2 - start2) + start2
+
+######################### timed intervals (switching scenes) #########################
 class Interval():
     def __init__(self, **config):
         # button graphic
