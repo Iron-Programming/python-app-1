@@ -48,24 +48,6 @@ def slopeField(x, y):
     dxDy = -math.cos(x/25)
     return dxDy
 
-def addLine(x1, y1, x2, y2, sw, col):
-    line = pygame.draw.line(SCREEN, col, (x1, y1), (x2, y2), width=sw)
-
-def addRect(x, y, w, h, c):
-    scratch_pad = pygame.Surface((w, h))
-    scratch_pad_rect = scratch_pad.get_rect(center=(x, y))
-    scratch_pad.fill(c)
-    SCREEN.blit(scratch_pad, scratch_pad_rect)
-
-# temporary
-pygame.init()
-
-# set app name
-pygame.display.set_caption("Final Project")
-
-# load background image
-BG = pygame.image.load("assets/background.jpg")
-
 def vectorSlopeField():
     '''MENU_TEXT = get_font(90).render("Vector Slope Field", True, "#b68f40")
     MENU_RECT = MENU_TEXT.get_rect(center=(globals['width']/2, 100))
@@ -92,6 +74,8 @@ def vectorSlopeField():
     for p in points:
         p.display()
         p.update()
+        if p.x > g1['mapX'] + g1['mapWidth']:
+            points.remove(p)
     
     addRect((g1['mapX'] - g1['mapWidth']/2)/2.2, g1['mapY'] - 10, g1['mapX'] - g1['mapWidth']/2, globals['height'] - 200, (200, 200, 200))
     addRect(globals['width'] - (g1['mapX'] - g1['mapWidth']/2)/2, g1['mapY'] - 10, g1['mapX'] - g1['mapWidth']/2, globals['height'] - 200, (200, 200, 200))

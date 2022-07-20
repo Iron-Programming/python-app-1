@@ -19,6 +19,14 @@ SCREEN = pygame.display.set_mode((globals['width'], globals['height']))
 def get_font(size, name="lemon_days"): # Returns Press-Start-2P in the desired size
     return pygame.font.Font("assets/" + name + ".ttf", size)
 
+def addLine(x1, y1, x2, y2, sw, col):
+    line = pygame.draw.line(SCREEN, col, (x1, y1), (x2, y2), width=sw)
+
+def addRect(x, y, w, h, c):
+    scratch_pad = pygame.Surface((w, h))
+    scratch_pad_rect = scratch_pad.get_rect(center=(x, y))
+    scratch_pad.fill(c)
+    SCREEN.blit(scratch_pad, scratch_pad_rect)
 
 # timed intervals (switching scenes)
 class Interval():
